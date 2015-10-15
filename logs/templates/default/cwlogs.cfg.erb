@@ -36,5 +36,11 @@ log_stream_name = <%= node[:opsworks][:instance][:hostname] %>
 [<%= node[:opsworks][:stack][:name] + '-node log' %>]
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ','_') + '_node_log'  %>
-file = <%= @deploy[:deploy_to] %>/current/log/production.log
+file = <%= node[:deploy][:deploy_to] %>/current/log/production.log
 log_stream_name = <%= node[:opsworks][:instance][:hostname] + '_node_log' %>
+
+[<%= node[:opsworks][:stack][:name] + '-node log2' %>]
+datetime_format = [%Y-%m-%d %H:%M:%S]
+log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ','_') + '_node_log2'  %>
+file = <%= @deploy[:deploy_to] %>/current/log/production.log
+log_stream_name = <%= node[:opsworks][:instance][:hostname] + '_node_log2' %>
